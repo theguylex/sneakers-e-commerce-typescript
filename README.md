@@ -97,6 +97,7 @@ npm start
 Opens server (port may vary).
 
 File Structure
+
 e-commerce-typescript/
 ├── dist/
 │   └── script.js          # Compiled JavaScript from script.ts
