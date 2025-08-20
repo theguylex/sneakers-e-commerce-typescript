@@ -1,0 +1,970 @@
+@import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@100..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Kumbh Sans;
+    /* border: 1px solid; */
+}
+
+nav {
+    position: fixed;
+    z-index: 2;
+    width: 100%;
+    padding: 0 5%;
+    background-color: #fff;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    border-bottom: 1px solid hsl(220, 14%, 75%);
+    /* align-items: center; */
+}
+
+.menu-logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.menuBtn {
+    display: none;
+}
+
+.logo-links {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+
+.topLinks {
+    display: flex;
+}
+
+ul li {
+    list-style-type: none;
+    padding: 0px 10px;
+}
+
+li a {
+    text-decoration: none;
+    padding: 37px 0;
+    color: hsl(220, 14%, 75%);
+    font-weight: 500;
+}
+
+li a:hover {
+    color: hsl(220, 13%, 13%);
+    border-bottom: 3px solid hsl(26, 100%, 55%);
+}
+
+.cart-avatar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    position: relative;
+}
+
+.navCart {
+    cursor: pointer;
+}
+
+.avatar {
+    height: 50%;
+    transform: translate(50%, 0);
+    border: 2px solid transparent;
+    border-radius: 25px;
+}
+
+.avatar:hover {
+    cursor: pointer;
+    border: 2px solid hsl(26, 100%, 55%);
+}
+
+.cart-popup {
+    position: absolute;
+    top: 60px;
+    right: 10px;
+    width: 300px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    z-index: 4;
+    display: none;
+    padding: 20px;
+}
+
+.cart-popup.show {
+    display: block;
+}
+
+.cart-popup h4 {
+    font-size: 16px;
+    font-weight: bold;
+    border-bottom: 1px solid hsl(220, 14%, 75%);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.cart-popup .cart-empty {
+    text-align: center;
+    color: hsl(219, 9%, 45%);
+    font-size: 14px;
+    margin: 20px 0;
+}
+
+.cart-popup .cart-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.cart-popup .cart-item img {
+    width: 50px;
+    border-radius: 5px;
+}
+
+.cart-popup .cart-item-details {
+    flex-grow: 1;
+    font-size: 14px;
+    color: hsl(219, 9%, 45%);
+}
+
+.cart-popup .cart-item-details p {
+    margin: 5px 0;
+}
+
+.cart-popup .cart-item-details .item-total {
+    font-weight: bold;
+    color: hsl(220, 13%, 13%);
+}
+
+.cart-popup .cart-item-delete {
+    cursor: pointer;
+    padding: 18px;
+}
+
+.cart-popup .cart-item-delete:hover {
+    filter: invert(58%) sepia(99%) saturate(1524%) hue-rotate(346deg) brightness(98%) contrast(101%);
+}
+
+.cart-popup .checkout-btn {
+    width: 100%;
+    padding: 10px;
+    background-color: hsl(26, 100%, 55%);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 500;
+    text-align: center;
+}
+
+.cart-popup .checkout-btn:hover {
+    background-color: hsl(26, 100%, 64%);
+}
+
+.mainContent {
+    display: flex;
+    justify-content: space-between;
+    padding: 10% 9%;
+}
+
+.carousel-container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.enlarged-img {
+    position: relative;
+}
+
+.enlarged-img img {
+    height: 370px;
+    border-radius: 12px;
+    transition: opacity 0.3s ease;
+    cursor: pointer;
+}
+
+.little-imgs {
+    display: flex;
+    gap: 15px;
+}
+
+.little-imgs img {
+    height: 81px;
+    border-radius: 12px;
+    position: relative;
+    cursor: pointer;
+}
+
+.little-imgs img.active {
+    border: 2px solid hsl(26, 100%, 55%);
+    opacity: 0.7;
+}
+
+.little-imgs img.active::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: hsl(26, 100%, 55%, 0.2);
+    border-radius: 10px;
+}
+
+.overlay-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.overlay-container .overlay-enlarged-img {
+    position: relative; /* Fixed typo: changed from 'overlay' to 'relative' */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.overlay-container .overlay-enlarged-img img {
+    height: 440px;
+    border-radius: 12px;
+    transition: opacity 0.3s ease;
+}
+
+.overlay-container .overlay-little-imgs {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+    justify-content: center;
+}
+
+.overlay-container .overlay-little-imgs img {
+    height: 81px;
+    border-radius: 12px;
+    position: relative;
+    cursor: pointer;
+}
+
+.overlay-container .overlay-little-imgs img:hover {
+    opacity: 0.7;
+}
+
+.overlay-container .overlay-little-imgs img.active {
+    border: 2px solid hsl(26, 100%, 55%);
+    opacity: 0.7;
+}
+
+.overlay-container .overlay-little-imgs img.active::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: hsl(26, 100%, 55%, 0.2);
+    border-radius: 10px;
+}
+
+.overlay-container .prev-btn,
+.overlay-container .next-btn {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background-color: #fff;
+    border-radius: 50%;
+    border: none;
+    font-size: 24px;
+    font-weight: 500;
+    color: #000;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 3;
+}
+
+.overlay-container .prev-btn {
+    left: -6%;
+}
+
+.overlay-container .next-btn {
+    right: -6%;
+}
+
+.overlay-container .prev-btn:hover,
+.overlay-container .next-btn:hover {
+    color: hsl(26, 100%, 55%);
+}
+
+.overlay-container .close-btn {
+    position: absolute;
+    top: -10%;
+    right: -3.5%;
+    width: 30px;
+    height: 30px;
+    background-color: transparent;
+    border-radius: 50%;
+    border: none;
+    font-size: 18px;
+    font-weight: 500;
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.overlay-container .close-btn:hover {
+    color: hsl(26, 100%, 55%);
+}
+
+.sneaker-info {
+    padding: 4% 19% 4% 4%;
+}
+
+.sneaker-info h2 {
+    margin-top: 20px;
+    font-size: 40px;
+}
+
+.sneaker-info p {
+    margin-top: 15px;
+    color: hsl(219, 9%, 45%);
+    line-height: 30px;
+}
+
+.price-percentage {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.price-percentage-container {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.price {
+    font-size: 28px;
+}
+
+.percentage {
+    background-color: black;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 5px;
+}
+
+.previous-price {
+    color: hsl(219, 9%, 45%);
+}
+
+.counter-addCartBtn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.counter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 35px;
+    background-color: hsl(223, 64%, 98%);
+    padding: 0px;
+    border-radius: 10px;
+}
+
+.counter h4 {
+    font-size: 13px;
+}
+
+.counter button {
+    all: unset;
+    color: hsl(26, 100%, 55%);
+    font-size: 18px;
+    font-weight: 800;
+    cursor: pointer;
+    padding: 9px 10px;
+}
+
+.addToCartBtn {
+    display: flex;
+    align-items: center;
+    padding: 10px 20%;
+    gap: 20px;
+    background-color: hsl(26, 100%, 55%);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.addToCartBtn:hover {
+    background-color: hsl(26, 100%, 64%);
+}
+
+.addToCartBtn span {
+    font-weight: 500;
+}
+
+/* Cart badge styling */
+.cart-badge {
+    position: absolute;
+    top: 30px;
+    right: 65%;
+    background-color: hsl(26, 100%, 55%);
+    color: white;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 10px;
+    display: none; 
+}
+
+/* Responsive media queries */
+
+/* Extra large screens */
+@media (min-width: 1920px) {}
+
+/* Desktops */
+@media (min-width:1200px) and (max-width:1919px) {
+    .mainContent {
+        gap: 30px;
+    }
+
+    .cart-popup {
+        width: 350px;
+        right: 20px;
+    }
+
+    /* .overlay-container .close-btn {
+        top: 30px;
+        right: 10px;
+    } */
+}
+
+/* Laptops/Large tablets */
+@media (min-width:992px) and (max-width:1199px) {
+    .mainContent {
+        padding: 15% 5%;
+        gap: 5px;
+    }
+
+    .carousel-container {
+        gap: 20px;
+    }
+
+    .enlarged-img img {
+        height: 320px;
+    }
+
+    .little-imgs img {
+        height: 68.9px;
+    }
+
+    .overlay-enlarged-img {
+        margin-top: -10%;
+    }
+
+    .sneaker-info {
+        padding: 4% 7%;
+    }
+
+    .cart-popup {
+        width: 300px;
+        right: 15px;
+    }
+}
+
+/* Small tablets */
+@media (min-width:768px) and (max-width:991px) {
+    nav {
+        padding: 0 5%;
+    }
+
+    .navbar {
+        padding: 0 4px;
+    }
+
+    ul li {
+        padding: 0px 7px;
+    }
+
+    .mainContent {
+        padding: 15% 5%;
+        gap: 5px;
+    }
+
+    .carousel-container {
+        gap: 20px;
+    }
+
+    .enlarged-img img {
+        height: 320px;
+    }
+
+    .little-imgs img {
+        height: 68.9px;
+    }
+
+    .overlay-enlarged-img {
+        margin-top: -40%;
+    }
+
+    .overlay-enlarged-img .close-btn {
+        right: 24%;
+    }
+
+    .sneaker-info {
+        padding: 4%;
+    }
+
+    .sneaker-info h2 {
+        margin-top: 20px;
+        font-size: 25px;
+    }
+
+    .addToCartBtn {
+        padding: 10px 8.1%;
+    }
+
+    .cart-popup {
+        width: 280px;
+        right: 10px;
+    }
+}
+
+/* Extra small devices */
+@media (min-width:664px) and (max-width:767px) {
+    nav {
+        padding: 0 5%;
+    }
+
+    .navbar {
+        padding: 0 4px;
+    }
+
+    .menuBtn {
+        display: block;
+        cursor: pointer;
+    }
+
+    .topLinks {
+        position: absolute;
+        top: 60%;
+        left: -30%;
+        width: 200px;
+        height: 53vh;
+        background: white;
+        flex-direction: column;
+        padding: 40px 20px;
+        transition: all .5s ease;
+    }
+
+    .topLinks.open {
+        left: 0;
+    }
+
+    ul li {
+        margin-left: 6px;
+        padding: 10px;
+    }
+
+    li a:hover {
+        color: hsl(219, 9%, 45%);
+    }
+
+    li a {
+        color: hsl(220, 13%, 13%);
+        padding: 0;
+    }
+
+    .mainContent {
+        padding: 18% 5% 1% 10%;
+        gap: 20px;
+    }
+
+    .carousel-container {
+        gap: 20px;
+    }
+
+    .enlarged-img img {
+        height: 320px;
+    }
+
+    .little-imgs img {
+        height: 68.9px;
+    }
+
+    .overlay-enlarged-img {
+        margin-top: -90%;
+    }
+
+    .sneaker-info {
+        padding: 2% 0;
+    }
+
+    .sneaker-info h2 {
+        margin-top: 20px;
+        font-size: 25px;
+    }
+
+    .sneaker-info p {
+        margin-top: 10px;
+        line-height: 25px;
+    }
+
+    .counter {
+        gap: 15px;
+    }
+
+    .addToCartBtn {
+        padding: 10px 2.8%;
+        gap: 5px;
+    }
+
+    .addToCartBtn span {
+        font-size: 13.3px;
+    }
+
+    .cart-popup {
+        width: 260px;
+        right: 5px;
+    }
+}
+
+@media (min-width:481px) and (max-width:663px) {
+    nav {
+        padding: 0%;
+    }
+
+    .navbar {
+        padding: 0 3%;
+    }
+
+    .menuBtn {
+        display: block;
+        cursor: pointer;
+    }
+
+    .topLinks {
+        position: absolute;
+        top: 60%;
+        left: -42%;
+        width: 200px;
+        height: 53vh;
+        background: white;
+        flex-direction: column;
+        padding: 40px 20px;
+        transition: all .5s ease;
+    }
+
+    .topLinks.open {
+        left: 0;
+    }
+
+    ul li {
+        margin-left: -15px;
+        padding: 10px;
+    }
+
+    li a:hover {
+        color: hsl(219, 9%, 45%);
+    }
+
+    li a {
+        color: hsl(220, 13%, 13%);
+        padding: 0;
+    }
+
+    .mainContent {
+        flex-direction: column;
+        padding: 18% 5% 1% 10%;
+        gap: 20px;
+    }
+
+    .carousel-container {
+        gap: 20px;
+    }
+
+    .enlarged-img img {
+        height: 320px;
+    }
+
+    .little-imgs {
+        display: none;
+    }
+
+    .little-imgs img {
+        height: 68.9px;
+    }
+
+    .overlay-enlarged-img {
+        margin-top: -90%;
+    }
+
+    .sneaker-info {
+        padding: 2% 0;
+    }
+
+    .sneaker-info h2 {
+        margin-top: 20px;
+        font-size: 25px;
+    }
+
+    .sneaker-info p {
+        margin-top: 10px;
+        line-height: 25px;
+    }
+
+    .price-percentage {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .counter-addCartBtn {
+        flex-direction: column;
+    }
+
+    .counter {
+        gap: 15px;
+        width: 100%;
+    }
+
+    .addToCartBtn {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .addToCartBtn span {
+        font-size: 13.3px;
+    }
+
+    .cart-popup {
+        width: 240px;
+        right: 5px;
+    }
+}
+
+/* Mobile */
+@media (min-width:320px) and (max-width:480px) {
+    nav {
+        padding: 0%;
+    }
+
+    .navbar {
+        padding: 1% 1% 1% 3%;
+        width: 100vw;
+        height: 80px;
+    }
+
+    .menuBtn {
+        display: block;
+        cursor: pointer;
+        height: 12px;
+    }
+
+    .logo {
+        height: 12px;
+    }
+
+    .topLinks {
+        position: absolute;
+        top: 60%;
+        left: -66%;
+        width: 200px;
+        height: 53vh;
+        background: white;
+        flex-direction: column;
+        padding: 40px 20px;
+        transition: all .5s ease;
+    }
+
+    .topLinks.open {
+        left: 0;
+    }
+
+    ul li {
+        margin-left: -15px;
+        padding: 10px;
+    }
+
+    li a:hover {
+        color: hsl(219, 9%, 45%);
+    }
+
+    li a {
+        color: hsl(220, 13%, 13%);
+        padding: 0;
+    }
+
+    .cart-avatar {
+        gap: 2px;
+    }
+
+    .mainContent {
+        flex-direction: column;
+        padding: 16% 0 5% 0;
+        gap: 20px;
+    }
+
+    .prev-btn-main,
+    .next-btn-main {
+        display: flex;
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        background-color: #fff;
+        border-radius: 50%;
+        border: none;
+        font-size: 19px;
+        font-weight: 600;
+        color: #000;
+        cursor: pointer;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        z-index: 3;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .prev-btn-main {
+        left: 10px;
+    }
+
+    .next-btn-main {
+        right: 10px;
+    }
+
+    .prev-btn-main:hover,
+    .next-btn-main:hover {
+        color: hsl(26, 100%, 55%);
+    }
+
+    .carousel-container {
+        gap: 20px;
+        text-align: center;
+    }
+
+    .enlarged-img img {
+        height: 350px;
+        width: 100%;
+        border-radius: 0;
+    }
+
+    .little-imgs {
+        display: none;
+    }
+
+    .little-imgs img {
+        height: 68.9px;
+    }
+
+    .overlay-container {
+        background-color: rgba(0, 0, 0, 0.9);
+    }
+
+    .overlay-container .close-btn {
+        right: 1%;
+    }
+
+    .overlay-container .overlay-enlarged-img img {
+        height: 300px;
+    }
+
+    .overlay-container .overlay-little-imgs img {
+        height: 64px;
+    }
+
+    .overlay-container .prev-btn {
+        left: 10px;
+    }
+
+    .overlay-container .next-btn {
+        right: 10px;
+    }
+
+    .overlay-container .prev-btn,
+    .overlay-container .next-btn {
+        height: 30px;
+        width: 30px;
+        font-size: 16px;
+    }
+
+    .sneaker-info {
+        padding: 2% 10px;
+    }
+
+    .sneaker-info h2 {
+        margin-top: 20px;
+        font-size: 25px;
+    }
+
+    .sneaker-info p {
+        margin-top: 10px;
+        line-height: 25px;
+        font-size: 13px;
+    }
+
+    .price-percentage {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .counter-addCartBtn {
+        flex-direction: column;
+    }
+
+    .counter {
+        gap: 15px;
+        width: 100%;
+    }
+
+    .addToCartBtn {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .addToCartBtn span {
+        font-size: 13.3px;
+    }
+
+    .cart-popup {
+        width: 93vw;
+        left: 50;
+        top: 90px;
+    }
+
+    .cart-badge {
+        top: 16px;
+        right: 66px;
+        font-size: 10px;
+        padding: 1px 5px;
+    }
+}

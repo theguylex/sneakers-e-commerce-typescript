@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="stylesheet" href="style.css">
+  <title>E-commerce product page</title>
+</head>
+<body>
+  <div class="page-container">
+    <nav>
+      <div class="navbar">
+        <div class="logo-links">
+          <div class="menu-logo">
+            <img src="images/icon-menu.svg" alt="menu-button" class="menuBtn">
+            <img src="images/logo.svg" alt="sneakers-logo" class="logo">
+          </div>
+          <div class="navlinks">
+            <ul class="topLinks">
+              <li><a href="">Collections</a></li>
+              <li><a href="">Men</a></li>
+              <li><a href="">Women</a></li>
+              <li><a href="">About</a></li>
+              <li><a href="">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="cart-avatar">
+            <img src="images/icon-cart.svg" alt="cart" class="navCart">
+            <img src="images/image-avatar.png" class="avatar" alt="avatar">
+        </div>
+      </div>
+    </nav>
+
+    <main class="mainContent">
+      <div class="carousel-container">
+        <div class="enlarged-img">
+          <img src="images/image-product-1.jpg" alt="sneaker1">
+        </div>
+        <div class="little-imgs">
+          <img src="images/image-product-1-thumbnail.jpg" alt="">
+          <img src="images/image-product-2-thumbnail.jpg" alt="">
+          <img src="images/image-product-3-thumbnail.jpg" alt="">
+          <img src="images/image-product-4-thumbnail.jpg" alt="">
+        </div>
+      </div>
+
+      <div class="sneaker-info">
+        <h6>SNEAKER COMPANY</h6>
+        <h2>Fall Limited Edition Sneakers</h2>
+        <p>These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer sole, they'll withstand everything the weather can offer.</p>
+        
+        <div class="price-percentage">
+          <div class="price-percentage-container">
+            <h4 class="price">$125.00</h4>
+            <h4 class="percentage">50%</h4>
+          </div>
+
+          <div class="prev-price-container">
+            <h5 class="previous-price"><del>$250.00</del></h5>
+          </div>
+        </div>
+
+        
+
+        <div class="counter-addCartBtn">
+          <div class="counter">
+            <button class="decreaseValue">-</button>
+            <h4 class="countValue">0</h4>
+            <button class="increaseValue">+</button>
+          </div>
+
+          <button class="addToCartBtn"><img src="images/icon-cart.svg" alt=""><span>Add to cart</span></button>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="dist/script.js"></script>
+</body>
+</html>
